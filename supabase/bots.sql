@@ -1,7 +1,8 @@
 -- Create a table for Public Profiles
 create table bots (
-  id uuid references not null,
+  id uuid not null default uuid_generate_v4(),
   updated_at timestamp with time zone default now(),
+  created_at timestamp with time zone default now(),
   creator uuid references auth.users not null,
   thumbnail_url text,
   banner_url text,
@@ -12,8 +13,6 @@ create table bots (
   long_description text not null,
   invite_url text not null,
   -- information, tags, links, stats (servercount, usercount,...)
-  -- upvotes bigint default 0, use separate table
-
 
   primary key (id),
   unique(botname),
