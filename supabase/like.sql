@@ -4,7 +4,7 @@ create table bot_like (
   updated_at timestamp with time zone default now(),
   created_at timestamp with time zone default now(),
   voter_uid uuid references auth.users not null,
-  bot_uid uuid references public.bots not null,
+  bot_uid uuid references public.bot not null,
   positive boolean default true,
 
   primary key (id),
