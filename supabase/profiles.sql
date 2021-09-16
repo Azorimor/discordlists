@@ -26,8 +26,8 @@ create policy "Users can update own profile."
   using ( auth.uid() = id );
 
 -- Set up Realtime!
-begin;
-  drop publication if exists supabase_realtime;
-  create publication supabase_realtime;
-commit;
-alter publication supabase_realtime add table profiles;
+-- begin;
+--   drop publication if exists supabase_realtime;
+--   create publication supabase_realtime;
+-- commit;
+-- alter publication supabase_realtime add table profiles;
