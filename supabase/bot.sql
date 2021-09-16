@@ -1,5 +1,5 @@
--- Create a table for Public Profiles
-create table bots (
+-- Create a table for bot
+create table bot (
   id uuid not null default uuid_generate_v4(),
   updated_at timestamp with time zone default now(),
   created_at timestamp with time zone default now(),
@@ -15,22 +15,21 @@ create table bots (
   -- information, tags, links, stats (servercount, usercount,...)
 
   primary key (id),
-  unique(botname),
-  constraint botname_length check (char_length(botname) >= 4)
+  unique(botname)
 );
 
-alter table bots enable row level security;
+alter table bot enable row level security;
 
 create policy "Public bots are viewable by everyone."
-  on bots for select
+  on bot for select
   using ( true );
 
-create policy "Users can insert their own bots."
-  on bots for insert
+create policy "Users can insert their own bot."
+  on bot for insert
   with check ( auth.uid() = creator );
 
-create policy "Users can update own bots."
-  on bots for update
+create policy "Users can update own bot."
+  on bot for update
   using ( auth.uid() = creator );
 
 -- Set up Realtime!
