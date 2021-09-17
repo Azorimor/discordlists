@@ -14,7 +14,12 @@ create policy "Public bot_has_tags are viewable by everyone."
 
 create policy "Users can insert their own bot_has_tags."
   on bot_has_tags for insert
-  with check ( auth.uid() = voter_uid ); -- TODO add check use bot_creator
+  -- with check ( auth.uid() = voter_uid ); -- TODO add check use bot_creator
+  using ( auth.uid() in (
+    select bot.creator_uid from bot
+    where bot.creator_uid = auth.uid()
+    and bot_uid = bot.id
+  ));
 
 create policy "Users can update own bot_has_tags."
   on bot_has_tags for update
