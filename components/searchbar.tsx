@@ -8,7 +8,7 @@ export default function Searchbar() {
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </span>
-      <input type="text" className="w-full rounded p-2 outline-none mr-2" placeholder="Bot details" />
+      <input type="text" className="w-full rounded p-2 outline-none dark:bg-gray-200 mr-2" placeholder="Bot details" />
       <button className="bg-green-400 hover:bg-green-300 rounded text-white p-2 pl-4 pr-4">
         <p className="font-semibold text-xs">Search</p>
       </button>
